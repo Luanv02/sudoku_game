@@ -1,0 +1,223 @@
+GerenciarTelas:
+    TelaMenu:
+        name: 'menu'
+    TelaGame:
+        name: 'game'
+    TelaGameOver:
+        name: 'over'
+    TelaScore:
+        name: 'score'    
+
+<TelaMenu>
+    BoxLayout:
+        id: menu_top
+        size_hint: 1 , 1
+        padding: 10
+        spacing: 10
+        orientation: 'vertical'
+        canvas:
+            Color:
+                rgb: 0.130, 0.180, 0.255
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Image:
+            source: './imagens/icon_sudoku.png'
+            size_hint_y: 2
+            allow_stretch: True
+        BoxLayout:
+            id: menu_bottom
+            orientation: 'vertical'
+            spacing: '8sp'
+            padding: '40sp', 0
+            Button:
+                text: 'Jogar'
+                size_hint: 1, None
+                size: 0, '50sp'
+                on_release:
+                    app.root.transition.direction = 'left'
+                    app.root.current = 'game'
+            Button:
+                text: 'Score'
+                size_hint: 1, None
+                size: 0, '50sp'
+                on_release:
+                    app.root.transition.direction = 'left'
+                    app.root.current = 'score'  
+            Button:
+                text: 'Sair do Aplicativo'  
+                size_hint: 1, None
+                size: 0, '50sp'    
+                on_release: app.stop()
+
+<TelaGame>
+    BoxLayout:
+        id: tela_jogo
+        orientation: 'vertical'
+        spacing: '8sp'
+        size_hint: 1, 1
+        canvas:
+            Color:
+                rgb: 0.130, 0.180, 0.255
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    app_icon: './imagens/icon.png'
+                    title: 'Sudoku'
+                    on_release: app.root.current = 'menu'
+
+        BoxLayout:
+            id: tela_jogo1
+            orientation: 'vertical'
+            size_hint_y: 10
+
+            BoxLayout:
+                id: tela_jogo2
+                size_hint_y: 10
+                padding: '13sp', '18sp', '13sp', '58sp'
+                orientation: 'vertical'
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: '50dp'
+                    padding: '10dp'
+                    spacing: '10dp'
+
+                    Label:
+                        text: 'Tempo: '
+                        size_hint_x: None
+                        width: self.texture_size[0]
+
+                    Label:
+                        id: tempo
+                        text: '00:00:00'
+                        size_hint_x: None
+                        width: self.texture_size[0]
+
+                GridLayout:
+                    id: tela_jogo_3
+                    cols: 9
+                    rows: 9
+                    padding: '2sp', '2sp'
+                    spacing: '2sp'
+                    size_hint: 1, 10
+                    canvas:
+                        Color:
+                            rgba: 0, 0, 0, 1
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                        Color:
+                            rgba: 0.133, 0.454, 0.647, 1
+
+                BoxLayout: #Botoes de 1 a 9
+                    id: tela_botoes
+                    orientation:'horizontal'
+                    Button:
+                        id: b1
+                        text: '1'
+                        color: 
+                        background_color: 
+                        on_release: root.selecionar_numero(1)
+                    Button:
+                        id: b2
+                        text: '2'
+                        color: 
+                        background_color: 
+                        on_release: root.selecionar_numero(2)
+                    Button:
+                        id: b3
+                        text: '3'
+                        color: 
+                        background_color: 
+                        on_release: root.selecionar_numero(3)
+                    Button:
+                        id: b4
+                        text: '4'
+                        color: 
+                        background_color: 
+                        on_release: root.selecionar_numero(4)
+                    Button:
+                        id: b5
+                        text: '5'
+                        color: 
+                        background_color: 
+                        on_release: root.selecionar_numero(5)
+                    Button:
+                        id: b6
+                        text: '6'
+                        color: 
+                        background_color: 
+                        on_release: root.selecionar_numero(6)
+                    Button:
+                        id: b7
+                        text: '7'
+                        color: 
+                        background_color: 
+                        on_release: root.selecionar_numero(7)
+                    Button:
+                        id: b8
+                        text: '8'
+                        color: 
+                        background_color: 
+                        on_release: root.selecionar_numero(8)
+                    Button:
+                        id: b9
+                        text: '9'
+                        color: 
+                        background_color: 
+                        on_release: root.selecionar_numero(9)
+
+                Button:
+                    id: b10
+                    text: 'Apagar'
+                    color: 
+                    background_color: 
+                    on_release: 
+
+<TelaGameOver>
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 1, 1
+        Label:
+            text: 'Você perdeu'
+        Button:
+            text: 'Jogar novamente'
+            on_release: app.root.current = 'game'
+        Button:
+            text: 'Voltar ao Menu Principal'      
+            on_release: app.root.current = 'menu'
+
+<TelaScore>
+    BoxLayout:
+        id: score
+        orientation: 'vertical'
+        size_hint: 1, 1
+        canvas:
+            Color:
+                rgb: 0.130, 0.180, 0.255
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    app_icon: './imagens/icon.png'
+                    title: 'Sudoku'
+                    on_release: app.root.current = 'menu'
+        BoxLayout:
+            id: score2
+            orientation: 'vertical'
+            Label:
+                text: 'Melhores pontuações'
+            Button:
+                text: 'Voltar ao Menu Principal'
+                size_hint: 1, None
+                size: 0, '50sp'
+                on_release:
+                    app.root.transition.direction = 'left'
+                    app.root.current = 'menu'
