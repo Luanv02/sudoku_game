@@ -3,9 +3,9 @@ import copy
 
 def sudoku():
 
-    tabuleiroVerdade = [[0 for _ in range(9)] for _ in range(9)]
+    tabuleiroVerdade = [[0 for i in range(9)] for i in range(9)]
     
-    def verificacao(sudoku, linha, col, num):
+    def naoRepetirNumeros(sudoku, linha, col, num):
         for x in range(9):
             if sudoku[linha][x] == num:
                 return False
@@ -33,7 +33,7 @@ def sudoku():
         numeros = list(range(1, 10))
         random.shuffle(numeros)
         for num in numeros:
-            if verificacao(sudoku, linha, col, num):
+            if naoRepetirNumeros(sudoku, linha, col, num):
                 sudoku[linha][col] = num
                 if valueTabuleiro(sudoku, linha, col + 1):
                     return True
@@ -48,8 +48,9 @@ def sudokuIncompleto():
     tabuleiroVerdade = sudoku()
     tabuleiroIncompleto = copy.deepcopy(tabuleiroVerdade)
 
-    dificuldades = {'Fácil': 20, 'Médio': 40, 'Difícil': 60}
-    dificuldade = dificuldades['Médio']
+    value = 'Médio'
+    dificuldades = {'Fácil': 20, 'Médio': 1, 'Difícil': 60}
+    dificuldade = dificuldades[value]
 
     posicoes = [(i, j) for i in range(9) for j in range(9)]
     random.shuffle(posicoes)
@@ -58,12 +59,4 @@ def sudokuIncompleto():
         linha, col = posicoes[i]
         tabuleiroIncompleto[linha][col] = 0
 
-    return tabuleiroIncompleto
-
-# tabuleiroVerdade, tabuleiroIncompleto = sudokuIncompleto()
-# print("Tabuleiro Completo:")
-# for linha in tabuleiroVerdade:
-#     print(linha)
-# print("\nTabuleiro Incompleto:")
-# for linha in tabuleiroIncompleto:
-#     print(linha)
+    return tabuleiroVerdade, tabuleiroIncompleto

@@ -28,26 +28,57 @@ GerenciarTelas:
         BoxLayout:
             id: menu_bottom
             orientation: 'vertical'
-            spacing: '8sp'
+            spacing: '12sp'
             padding: '40sp', 0
+
             Button:
-                text: 'Jogar'
+                markup: True
+                text: '[b]Novo Jogo[/b]'
                 size_hint: 1, None
-                size: 0, '50sp'
+                size: 0, '40sp'
+                color: 0.130, 0.180, 0.255
+                background_normal: ''
+                background_color: 0.88, 0.88, 0.88, 1
+                canvas.before:
+                    Color:
+                        rgba: 0.80, 0.80, 0.80, 1
+                    Line:
+                        width: 2.5
+                        rectangle: self.x, self.y, self.width, self.height
                 on_release:
                     app.root.transition.direction = 'left'
                     app.root.current = 'game'
             Button:
-                text: 'Score'
+                markup: True
+                text: '[b]Pontuações[/b]'
                 size_hint: 1, None
-                size: 0, '50sp'
+                size: 0, '40sp'
+                color: 0.130, 0.180, 0.255
+                background_normal: ''
+                background_color: 0.88, 0.88, 0.88, 1
+                canvas.before:
+                    Color:
+                        rgba: 0.80, 0.80, 0.80, 1
+                    Line:
+                        width: 2.5
+                        rectangle: self.x, self.y, self.width, self.height
                 on_release:
                     app.root.transition.direction = 'left'
                     app.root.current = 'score'  
             Button:
-                text: 'Sair do Aplicativo'  
+                markup: True
+                text: '[b]Sair do Aplicativo[/b]'  
                 size_hint: 1, None
-                size: 0, '50sp'    
+                size: 0, '40sp'
+                color: 0.130, 0.180, 0.255
+                background_normal: ''
+                background_color: 0.88, 0.88, 0.88, 1
+                canvas.before:
+                    Color:
+                        rgba: 0.80, 0.80, 0.80, 1
+                    Line:
+                        width: 2.5
+                        rectangle: self.x, self.y, self.width, self.height
                 on_release: app.stop()
 
 <TelaGame>
@@ -78,14 +109,15 @@ GerenciarTelas:
                 id: tela_jogo2
                 size_hint_y: 10
                 padding: '13sp', '18sp', '13sp', '58sp'
+                spacing: '12sp'
                 orientation: 'vertical'
 
                 BoxLayout:
                     orientation: 'horizontal'
                     size_hint_y: None
-                    height: '50dp'
-                    padding: '10dp'
-                    spacing: '10dp'
+                    height: '50sp'
+                    padding: '10sp'
+                    spacing: '10sp'
 
                     Label:
                         text: 'Tempo: '
@@ -102,8 +134,8 @@ GerenciarTelas:
                     id: tela_jogo_3
                     cols: 9
                     rows: 9
-                    padding: '2sp', '2sp'
-                    spacing: '2sp'
+                    padding: '1sp', '1sp'
+                    spacing: '0.1sp'
                     size_hint: 1, 10
                     canvas:
                         Color:
@@ -119,72 +151,166 @@ GerenciarTelas:
                     orientation:'horizontal'
                     Button:
                         id: b1
-                        text: '1'
-                        color: 
-                        background_color: 
+                        text: '[b]1[/b]'
+                        markup: True
+                        color: 0.130, 0.180, 0.255
+                        background_normal: ''
+                        background_color: 0.88, 0.88, 0.88, 1
+                        canvas.before:
+                            Color:
+                                rgba: 0.80, 0.80, 0.80, 1
+                            Line:
+                                width: 2.5
+                                rectangle: self.x, self.y, self.width, self.height
                         on_release: root.selecionar_numero(1)
                     Button:
                         id: b2
-                        text: '2'
-                        color: 
-                        background_color: 
+                        text: '[b]2[/b]'
+                        markup: True
+                        color: 0.130, 0.180, 0.255
+                        background_normal: ''
+                        background_color: 0.88, 0.88, 0.88, 1
+                        canvas.before:
+                            Color:
+                                rgba: 0.80, 0.80, 0.80, 1
+                            Line:
+                                width: 2.5
+                                rectangle: self.x, self.y, self.width, self.height
                         on_release: root.selecionar_numero(2)
                     Button:
                         id: b3
-                        text: '3'
-                        color: 
-                        background_color: 
+                        text: '[b]3[/b]'
+                        markup: True
+                        color: 0.130, 0.180, 0.255
+                        background_normal: ''
+                        background_color: 0.88, 0.88, 0.88, 1
+                        canvas.before:
+                            Color:
+                                rgba: 0.80, 0.80, 0.80, 1
+                            Line:
+                                width: 2.5
+                                rectangle: self.x, self.y, self.width, self.height
                         on_release: root.selecionar_numero(3)
                     Button:
                         id: b4
-                        text: '4'
-                        color: 
-                        background_color: 
+                        text: '[b]4[/b]'
+                        markup: True
+                        color: 0.130, 0.180, 0.255
+                        background_normal: ''
+                        background_color: 0.88, 0.88, 0.88, 1
+                        canvas.before:
+                            Color:
+                                rgba: 0.80, 0.80, 0.80, 1
+                            Line:
+                                width: 2.5
+                                rectangle: self.x, self.y, self.width, self.height
                         on_release: root.selecionar_numero(4)
                     Button:
                         id: b5
-                        text: '5'
-                        color: 
-                        background_color: 
+                        text: '[b]5[/b]'
+                        markup: True
+                        color: 0.130, 0.180, 0.255
+                        background_normal: ''
+                        background_color: 0.88, 0.88, 0.88, 1
+                        canvas.before:
+                            Color:
+                                rgba: 0.80, 0.80, 0.80, 1
+                            Line:
+                                width: 2.5
+                                rectangle: self.x, self.y, self.width, self.height
                         on_release: root.selecionar_numero(5)
                     Button:
                         id: b6
-                        text: '6'
-                        color: 
-                        background_color: 
+                        text: '[b]6[/b]'
+                        markup: True
+                        color: 0.130, 0.180, 0.255
+                        background_normal: ''
+                        background_color: 0.88, 0.88, 0.88, 1
+                        canvas.before:
+                            Color:
+                                rgba: 0.80, 0.80, 0.80, 1
+                            Line:
+                                width: 2.5
+                                rectangle: self.x, self.y, self.width, self.height
                         on_release: root.selecionar_numero(6)
                     Button:
                         id: b7
-                        text: '7'
-                        color: 
-                        background_color: 
+                        text: '[b]7[/b]'
+                        markup: True
+                        color: 0.130, 0.180, 0.255
+                        background_normal: ''
+                        background_color: 0.88, 0.88, 0.88, 1
+                        canvas.before:
+                            Color:
+                                rgba: 0.80, 0.80, 0.80, 1
+                            Line:
+                                width: 2.5
+                                rectangle: self.x, self.y, self.width, self.height
                         on_release: root.selecionar_numero(7)
                     Button:
                         id: b8
-                        text: '8'
-                        color: 
-                        background_color: 
+                        text: '[b]8[/b]'
+                        markup: True
+                        color: 0.130, 0.180, 0.255
+                        background_normal: ''
+                        background_color: 0.88, 0.88, 0.88, 1
+                        canvas.before:
+                            Color:
+                                rgba: 0.80, 0.80, 0.80, 1
+                            Line:
+                                width: 2.5
+                                rectangle: self.x, self.y, self.width, self.height
                         on_release: root.selecionar_numero(8)
                     Button:
                         id: b9
-                        text: '9'
-                        color: 
-                        background_color: 
+                        text: '[b]9[/b]'
+                        markup: True
+                        color: 0.130, 0.180, 0.255
+                        background_normal: ''
+                        background_color: 0.88, 0.88, 0.88, 1
+                        canvas.before:
+                            Color:
+                                rgba: 0.80, 0.80, 0.80, 1
+                            Line:
+                                width: 2.5
+                                rectangle: self.x, self.y, self.width, self.height
                         on_release: root.selecionar_numero(9)
 
                 Button:
                     id: b10
-                    text: 'Apagar'
-                    color: 
-                    background_color: 
-                    on_release: 
+                    text: '[b]Apagar[/b]'
+                    markup: True
+                    color: 0.130, 0.180, 0.255
+                    background_normal: ''
+                    background_color: 0.88, 0.88, 0.88, 1
+                    canvas.before:
+                        Color:
+                            rgba: 0.80, 0.80, 0.80, 1
+                        Line:
+                            width: 2.5
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_release: root.apagar_numero()
+                Button:
+                    id: b11
+                    text: '[b]Verificar Sudoku[/b]'
+                    markup: True
+                    color: 0.130, 0.180, 0.255
+                    background_normal: ''
+                    background_color: 0.88, 0.88, 0.88, 1
+                    canvas.before:
+                        Color:
+                            rgba: 0.80, 0.80, 0.80, 1
+                        Line:
+                            width: 2.5
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_release: root.verificacao()
 
 <TelaGameOver>
     BoxLayout:
         orientation: 'vertical'
         size_hint: 1, 1
         Label:
-            text: 'Você perdeu'
+            text: 'Voc  perdeu'
         Button:
             text: 'Jogar novamente'
             on_release: app.root.current = 'game'
