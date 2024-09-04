@@ -1,9 +1,6 @@
 from kivy.app import App
 from sudoku import sudokuIncompleto
-<<<<<<< HEAD
 from kivy.core.window import Window
-=======
->>>>>>> 219d83cc39a66189674d53319e41cc8aed2a8079
 from kivy.lang import Builder 
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.textinput import TextInput
@@ -13,13 +10,10 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
 from kivy.clock import Clock
 
-<<<<<<< HEAD
 Window.size = (412,640)
 Window.minimum_width = 412
 Window.minimum_height = 640
 
-=======
->>>>>>> 219d83cc39a66189674d53319e41cc8aed2a8079
 class GerenciarTelas(ScreenManager):
     pass
 
