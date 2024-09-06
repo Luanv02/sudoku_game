@@ -24,6 +24,7 @@ class TelaGame(Screen):
     caixa_selecionada = None
     tabuleiroVerdade = None
     tabuleiroIncompleto = None
+    valor_mensagem = None
 
     def on_enter(self):
         self.tabuleiroVerdade, self.tabuleiroIncompleto = sudokuIncompleto()
@@ -73,19 +74,50 @@ class TelaGame(Screen):
             self.caixa_selecionada = None
 
     def verificacao(self):
-        content = BoxLayout(orientation='vertical')
+        conteudo = BoxLayout(orientation='vertical')
         if self.tabuleiroIncompleto == self.tabuleiroVerdade:
-            mensagem = "Parabéns, sudoku completado corretamente!"
+            conteudo.add_widget(Label(text="Parabéns, sudoku completado corretamente!",
+                                  size_hint_y= None,
+                                  height= 100))
+            botao_fechar = Button(text='Voltar ao Menu Inicial')
+            botao_fechar.bind(on_press=self.voltar_para_menu)
+            conteudo.add_widget(botao_fechar)
         else:
-            mensagem = "Sudoku incompleto e/ou incorreto, tente novamente."
-        
-        content.add_widget(Label(text=mensagem))
-        close_button = Button(text='Fechar')
-        close_button.bind(on_press=self.fechar_popup)
-        content.add_widget(close_button)
-
+            conteudo.add_widget(Label(text="Sudoku incompleto e/ou incorreto, tente novamente.",
+                                  size_hint_y= None,
+                                  height= 100))
+            botao_fechar = Button(text='Tentar Novamente',
+                                 size_hint_y=None,
+                                 height=40)
+            botao_fechar.bind(on_press=self.fechar_popup)
+            conteudo.add_widget(botao_fechar)
+                
         self.popup = Popup(title='Resultado da Verificação',
-                           content=content,
+                           content=conteudo,
+                           size_hint=(None, None),
+                           size=(400, 200))
+        self.popup.open()
+
+    def certeza_para_voltar(self):
+        conteudo = BoxLayout(orientation='vertical')
+        botoes = BoxLayout(orientation='horizontal')
+        conteudo.add_widget(Label(text="Tem certeza que deseja voltar ao Menu Inicial?\nSeu progresso será perdido.",
+                                  size_hint_y= None,
+                                  height= 100))
+        botao_continuar = Button(text='Não',
+                                 size_hint_y= None,
+                                 height= 40)
+        botao_voltar = Button(text='Sim',
+                                 size_hint_y= None,
+                                 height= 40)
+        botao_continuar.bind(on_press=self.fechar_popup)
+        botao_voltar.bind(on_press=self.voltar_para_menu)
+        conteudo.add_widget(botoes)
+        botoes.add_widget(botao_continuar)
+        botoes.add_widget(botao_voltar)
+
+        self.popup = Popup(title='Retornar ao Menu Inicial',
+                           content=conteudo,
                            size_hint=(None, None),
                            size=(400, 200))
         self.popup.open()
@@ -93,6 +125,10 @@ class TelaGame(Screen):
     def fechar_popup(self, instance):
         self.popup.dismiss()
 
+    def voltar_para_menu(self, instance):
+        App.get_running_app().root.current = 'menu'
+        self.popup.dismiss()
+    
 class TelaGameOver(Screen):
     pass
 
