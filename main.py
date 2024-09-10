@@ -50,7 +50,8 @@ class TelaGame(Screen):
                 grid_layout.add_widget(text_input)
 
     def selecionar_caixa(self, instance, touch):
-        if instance.collide_point(*touch.pos):
+        self.caixa_selecionada = None
+        if instance.collide_point(*touch.pos) and not instance.disabled:
             self.caixa_selecionada = instance
 
     def selecionar_numero(self, numero):

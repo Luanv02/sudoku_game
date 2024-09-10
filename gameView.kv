@@ -145,8 +145,18 @@ GerenciarTelas:
                             pos: self.pos
                         Color:
                             rgba: 0.133, 0.454, 0.647, 1
+                
+                BoxLayout:
+                    size_hint_x: '1sp'
+                    size_hint_y: '0.1sp'
+                    canvas:
+                        Color:
+                            rgba: 0.80, 0.80, 0.80, 1
+                        Rectangle:
+                            size: self.width, self.height
+                            pos: self.pos
 
-                BoxLayout: #Botoes de 1 a 9
+                BoxLayout:
                     id: tela_botoes
                     orientation:'horizontal'
                     Button:
