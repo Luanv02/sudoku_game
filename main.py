@@ -8,6 +8,7 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
+from kivy.graphics import Line, Color
 from kivy.clock import Clock
 
 Window.size = (412,640)
@@ -33,17 +34,27 @@ class TelaGame(Screen):
 
         for linha in range(9):
             for col in range(9):
+                if (linha // 3 + col // 3) % 2 == 0:
+                    background_color = (0.595, 0.705, 0.98, 0.35)
+                else:
+                    background_color = (0.595, 0.705, 0.98, 0.7)
+
                 valor = self.tabuleiroIncompleto[linha][col]
                 text_input = TextInput(
                     text=str(valor) if valor != 0 else "",
-                    multiline=False,
-                    halign='center',
-                    font_size=18,
-                    size=(35, 35),
-                    input_filter='int',
-                    readonly=True,
-                    disabled=valor != 0
+                    multiline= False,
+                    halign= 'center',
+                    font_size= 18,
+                    size= (35, 35),
+                    input_filter= 'int',
+                    readonly= True,
+                    disabled= valor != 0,
+                    background_color= background_color,
+                    foreground_color= (1, 1, 1, 1)
                 )
+                with text_input.canvas.before:
+                    Color(1, 1, 1, 1)
+
                 text_input.bind(on_touch_down=self.selecionar_caixa)
                 text_input.linha = linha
                 text_input.col = col
